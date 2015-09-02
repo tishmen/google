@@ -17,9 +17,6 @@ class GoogleScraper(object):
         self.result_count = 0
         self.link_count = 0
         self.links = []
-        self.headers = {
-            'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0'
-        }
 
     def construct_url(self, keyword, **kwargs):
         kwargs['q'] = [keyword]
@@ -27,7 +24,7 @@ class GoogleScraper(object):
         return 'http://www.google.com/search?' + query_string
 
     def get_page(self, url):
-        response = requests.get(url, headers=self.headers)
+        response = requests.get(url)
         if not response == 200:
             raise GoogleException('Blocked by Google')
         return BeautifulSoup(response.content, 'html.parser')
