@@ -4,3 +4,4 @@ migrations
 *.sublime-project
 *.sublime-workspace
 *.pid
+log
